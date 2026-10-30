@@ -1,0 +1,536 @@
+{
+  "archviz": {
+    "b56": {
+      "folder": "B56",
+      "renders": [
+        {
+          "key": "archviz/b56-01",
+          "width": 3840,
+          "height": 3840,
+          "hero": false,
+          "title": "B56",
+          "studio": "STA+D",
+          "location": "Undisclosed",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/b56-02",
+          "width": 4320,
+          "height": 2880,
+          "hero": true,
+          "title": "B56",
+          "studio": "STA+D",
+          "location": "Undisclosed",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/b56-03",
+          "width": 5016,
+          "height": 5016,
+          "hero": false
+        },
+        {
+          "key": "archviz/b56-04",
+          "width": 4320,
+          "height": 2880,
+          "hero": false
+        },
+        {
+          "key": "archviz/b56-05",
+          "width": 3840,
+          "height": 2557,
+          "hero": false
+        }
+      ]
+    },
+    "gemba-fitness-studio": {
+      "folder": "GEMBA - Fitness Studio",
+      "renders": [
+        {
+          "key": "archviz/gemba-fitness-studio-01",
+          "width": 2112,
+          "height": 1472,
+          "hero": false,
+          "title": "Fitness Studio",
+          "studio": "Gemba Design Studio",
+          "location": "Kalkaji, New Delhi",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/gemba-fitness-studio-02",
+          "width": 2112,
+          "height": 1472,
+          "hero": false
+        },
+        {
+          "key": "archviz/gemba-fitness-studio-03",
+          "width": 2112,
+          "height": 1472,
+          "hero": false
+        }
+      ]
+    },
+    "jindal": {
+      "folder": "Jindal",
+      "renders": [
+        {
+          "key": "archviz/jindal-01",
+          "width": 2560,
+          "height": 1704,
+          "hero": false,
+          "title": "Jindal",
+          "studio": "Matra Architects",
+          "location": "Undisclosed",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/jindal-02",
+          "width": 3840,
+          "height": 2581,
+          "hero": false,
+          "title": "Jindal",
+          "studio": "Matra Architects",
+          "location": "Undisclosed",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/jindal-03",
+          "width": 3840,
+          "height": 2581,
+          "hero": false
+        },
+        {
+          "key": "archviz/jindal-04",
+          "width": 3840,
+          "height": 2557,
+          "hero": false
+        }
+      ]
+    },
+    "karyan-nine": {
+      "folder": "KARYAN NINE",
+      "renders": [
+        {
+          "key": "archviz/karyan-nine-01",
+          "width": 4992,
+          "height": 3480,
+          "hero": true,
+          "title": "Karyan NINE",
+          "studio": "STA+D",
+          "location": "NH-9",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/karyan-nine-02",
+          "width": 4000,
+          "height": 2800,
+          "hero": false,
+          "title": "Karyan NINE",
+          "studio": "STA+D",
+          "location": "NH-9",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/karyan-nine-03",
+          "width": 4402,
+          "height": 3480,
+          "hero": false,
+          "title": "Karyan NINE",
+          "studio": "STA+D",
+          "location": "NH-9",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/karyan-nine-04",
+          "width": 4224,
+          "height": 2944,
+          "hero": false,
+          "title": "Karyan NINE",
+          "studio": "STA+D",
+          "location": "NH-9",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/karyan-nine-05",
+          "width": 3840,
+          "height": 5120,
+          "hero": false,
+          "title": "Karyan NINE",
+          "studio": "STA+D",
+          "location": "NH-9",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/karyan-nine-06",
+          "width": 5120,
+          "height": 3674,
+          "hero": false,
+          "title": "Karyan NINE",
+          "studio": "STA+D",
+          "location": "NH-9",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/karyan-nine-07",
+          "width": 4128,
+          "height": 3040,
+          "hero": false,
+          "title": "Karyan NINE",
+          "studio": "STA+D",
+          "location": "NH-9",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/karyan-nine-08",
+          "width": 6848,
+          "height": 4896,
+          "hero": false,
+          "title": "Karyan NINE",
+          "studio": "STA+D",
+          "location": "NH-9",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/karyan-nine-09",
+          "width": 4192,
+          "height": 2976,
+          "hero": false
+        }
+      ]
+    },
+    "kasauli-trident": {
+      "folder": "Kasauli Trident",
+      "renders": [
+        {
+          "key": "archviz/kasauli-trident-01",
+          "width": 2112,
+          "height": 1472,
+          "hero": false,
+          "title": "Kasauli Trident",
+          "studio": "STA+D",
+          "location": "Kasauli, Himachal Pradesh",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/kasauli-trident-02",
+          "width": 2112,
+          "height": 1472,
+          "hero": false,
+          "title": "Kasauli Trident",
+          "studio": "STA+D",
+          "location": "Kasauli, Himachal Pradesh",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/kasauli-trident-03",
+          "width": 2112,
+          "height": 1472,
+          "hero": true,
+          "title": "Kasauli Trident",
+          "studio": "STA+D",
+          "location": "Kasauli, Himachal Pradesh",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/kasauli-trident-04",
+          "width": 2112,
+          "height": 1472,
+          "hero": false,
+          "title": "Kasauli Trident",
+          "studio": "STA+D",
+          "location": "Kasauli, Himachal Pradesh",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/kasauli-trident-05",
+          "width": 2112,
+          "height": 1472,
+          "hero": false,
+          "title": "Kasauli Trident",
+          "studio": "STA+D",
+          "location": "Kasauli, Himachal Pradesh",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/kasauli-trident-06",
+          "width": 2112,
+          "height": 1472,
+          "hero": false,
+          "title": "Kasauli Trident",
+          "studio": "STA+D",
+          "location": "Kasauli, Himachal Pradesh",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/kasauli-trident-07",
+          "width": 2112,
+          "height": 1472,
+          "hero": false,
+          "title": "Kasauli Trident",
+          "studio": "STA+D",
+          "location": "Kasauli, Himachal Pradesh",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/kasauli-trident-08",
+          "width": 2112,
+          "height": 1472,
+          "hero": true,
+          "title": "Kasauli Trident",
+          "studio": "STA+D",
+          "location": "Kasauli, Himachal Pradesh",
+          "year": "2026"
+        }
+      ]
+    },
+    "nfc": {
+      "folder": "NFC",
+      "renders": [
+        {
+          "key": "archviz/nfc-01",
+          "width": 3840,
+          "height": 2703,
+          "hero": false,
+          "title": "NFC",
+          "studio": "Matra Arcitects",
+          "location": "Undisclosed",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/nfc-02",
+          "width": 3840,
+          "height": 2841,
+          "hero": false,
+          "title": "NFC",
+          "studio": "Matra Arcitects",
+          "location": "Undisclosed",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/nfc-03",
+          "width": 3840,
+          "height": 2841,
+          "hero": true,
+          "title": "NFC",
+          "studio": "Matra Arcitects",
+          "location": "Undisclosed",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/nfc-04",
+          "width": 2880,
+          "height": 3840,
+          "hero": false,
+          "title": "NFC",
+          "studio": "Matra Arcitects",
+          "location": "Undisclosed",
+          "year": "2026"
+        },
+        {
+          "key": "archviz/nfc-05",
+          "width": 3840,
+          "height": 3840,
+          "hero": false
+        }
+      ]
+    },
+    "westfield-mumbai": {
+      "folder": "Westfield Mumbai",
+      "renders": [
+        {
+          "key": "archviz/westfield-mumbai-01",
+          "width": 3840,
+          "height": 2557,
+          "hero": false
+        },
+        {
+          "key": "archviz/westfield-mumbai-02",
+          "width": 3840,
+          "height": 2557,
+          "hero": false
+        },
+        {
+          "key": "archviz/westfield-mumbai-03",
+          "width": 3840,
+          "height": 2557,
+          "hero": false
+        },
+        {
+          "key": "archviz/westfield-mumbai-04",
+          "width": 3840,
+          "height": 2557,
+          "hero": false
+        },
+        {
+          "key": "archviz/westfield-mumbai-05",
+          "width": 3840,
+          "height": 2557,
+          "hero": false
+        }
+      ]
+    }
+  },
+  "practice": [
+    {
+      "key": "practice/practice-001",
+      "width": 1164,
+      "height": 1351,
+      "file": "Practice render 001.png"
+    },
+    {
+      "key": "practice/practice-002",
+      "width": 941,
+      "height": 1672,
+      "file": "Practice render 002.png"
+    },
+    {
+      "key": "practice/practice-003",
+      "width": 1080,
+      "height": 1519,
+      "file": "Practice render 003.jpg"
+    },
+    {
+      "key": "practice/practice-004",
+      "width": 1254,
+      "height": 1254,
+      "file": "Practice render 004.png"
+    },
+    {
+      "key": "practice/practice-005",
+      "width": 1254,
+      "height": 1254,
+      "file": "Practice render 005.png"
+    },
+    {
+      "key": "practice/practice-006",
+      "width": 3840,
+      "height": 2160,
+      "file": "Practice render 006.png"
+    },
+    {
+      "key": "practice/practice-007",
+      "width": 941,
+      "height": 1672,
+      "file": "Practice render 007.png"
+    },
+    {
+      "key": "practice/practice-008",
+      "width": 1254,
+      "height": 1254,
+      "file": "Practice render 008.png"
+    },
+    {
+      "key": "practice/practice-009",
+      "width": 1099,
+      "height": 1431,
+      "file": "Practice render 009.png"
+    },
+    {
+      "key": "practice/practice-010",
+      "width": 1088,
+      "height": 1445,
+      "file": "Practice render 010.png"
+    }
+  ],
+  "videos": {
+    "apocalyptic-road": {
+      "file": "Apocalyptic Road (Cinematic).mp4",
+      "duration": 19,
+      "width": 1920,
+      "height": 1080,
+      "poster": {
+        "key": "env/apocalyptic-road",
+        "width": 1920,
+        "height": 862
+      }
+    },
+    "medieval-castle-main": {
+      "file": "Medieval Castle MAIN.mp4",
+      "duration": 16,
+      "width": 1920,
+      "height": 1080,
+      "poster": {
+        "key": "env/medieval-castle-main",
+        "width": 1920,
+        "height": 862
+      }
+    },
+    "porsche-gt4-rs": {
+      "file": "Porsche GT4 RS.mp4",
+      "duration": 24,
+      "width": 1080,
+      "height": 1920,
+      "poster": {
+        "key": "env/porsche-gt4-rs",
+        "width": 1080,
+        "height": 1920
+      }
+    },
+    "spaceshipmain": {
+      "file": "SpaceshipMAIN.mp4",
+      "duration": 32,
+      "width": 1920,
+      "height": 1080,
+      "poster": {
+        "key": "env/spaceshipmain",
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    "tajmahal-renders-compilation2": {
+      "file": "Tajmahal_Renders_Compilation2.mp4",
+      "duration": 18,
+      "width": 1920,
+      "height": 1080,
+      "poster": {
+        "key": "env/tajmahal-renders-compilation2",
+        "width": 1920,
+        "height": 816
+      }
+    },
+    "the-lost-pyramid": {
+      "file": "The Lost Pyramid.mp4",
+      "duration": 15,
+      "width": 1920,
+      "height": 1080,
+      "poster": {
+        "key": "env/the-lost-pyramid",
+        "width": 1920,
+        "height": 862
+      }
+    },
+    "the-nuclear-plant": {
+      "file": "The Nuclear Plant (Main).mp4",
+      "duration": 60,
+      "width": 3840,
+      "height": 2160,
+      "poster": {
+        "key": "env/the-nuclear-plant",
+        "width": 3840,
+        "height": 1720
+      }
+    },
+    "the-valley-of-aldrheim": {
+      "file": "The Valley of Aldrheim.mp4",
+      "duration": 33,
+      "width": 1920,
+      "height": 1080,
+      "poster": {
+        "key": "env/the-valley-of-aldrheim",
+        "width": 1920,
+        "height": 860
+      }
+    },
+    "wildwestshot": {
+      "file": "WildWestShot(Cinematic)(FIX).mp4",
+      "duration": 15,
+      "width": 1920,
+      "height": 1080,
+      "poster": {
+        "key": "env/wildwestshot",
+        "width": 1920,
+        "height": 860
+      }
+    }
+  }
+}

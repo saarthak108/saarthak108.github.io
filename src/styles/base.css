@@ -1,0 +1,234 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+  background: var(--bg);
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* No overflow on body: html's overflow-x clip handles it, and a body scroll container would break sticky */
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+h1,
+h2,
+h3,
+p,
+ol,
+ul,
+dl,
+dd,
+figure {
+  margin: 0;
+  padding: 0;
+}
+ol,
+ul {
+  list-style: none;
+}
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Type ---------- */
+.display {
+  font-family: var(--font-display);
+  font-stretch: 118%;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+.serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: normal;
+  letter-spacing: -0.01em;
+}
+.mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+.label {
+  color: var(--fg-2);
+}
+.dim {
+  color: var(--fg-3);
+}
+.dim-2 {
+  color: var(--fg-2);
+}
+.accent {
+  color: var(--accent);
+}
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.skip {
+  position: fixed;
+  left: 12px;
+  top: -60px;
+  z-index: 100;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 8px 14px;
+}
+.skip:focus {
+  top: 12px;
+}
+
+/* ---------- Layout ---------- */
+.wrap {
+  padding-left: var(--gutter);
+  padding-right: calc(var(--gutter) + var(--scale-w));
+  max-width: 1760px;
+  margin-inline: auto;
+}
+section {
+  padding-block: clamp(80px, 11vw, 170px);
+}
+
+.rule-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  margin-bottom: clamp(36px, 5vw, 64px);
+  color: var(--fg-2);
+}
+.rule-label a:hover {
+  color: var(--fg);
+}
+
+.section-title {
+  font-size: clamp(36px, 6vw, 96px);
+  max-width: 14ch;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+
+/* ---------- Motion primitives ---------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0);
+  transition:
+    opacity 1s var(--ease) var(--d, 0ms),
+    transform 1.3s var(--ease) var(--d, 0ms);
+}
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+[data-reveal] .render {
+  clip-path: inset(14% 0 0 0);
+  transition: clip-path 1.4s var(--ease) var(--d, 0ms);
+}
+[data-reveal].is-in .render {
+  clip-path: inset(0 0 0 0);
+}
+
+.page {
+  animation: page-in 0.9s var(--ease) 0.18s backwards;
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: var(--bg-2);
+  transform-origin: top;
+  pointer-events: none;
+  animation: curtain 0.85s var(--ease-io) both;
+}
+.curtain::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent);
+}
+@keyframes curtain {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  [data-reveal],
+  [data-reveal] .render {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+}
