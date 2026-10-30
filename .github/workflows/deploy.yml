@@ -24,12 +24,12 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      # Asks GitHub where the site is served: "" for a custom domain or <name>.github.io,
+      # "/<repo>" for a project site. Re-run this workflow after changing the custom domain.
+      - id: pages
+        uses: actions/configure-pages@v5
       - name: Build
-        # Project sites live under /<repo>/; user sites (<name>.github.io) live at /.
-        run: |
-          REPO="${GITHUB_REPOSITORY#*/}"
-          if [[ "$REPO" == *.github.io ]]; then export BASE_PATH="/"; else export BASE_PATH="/$REPO/"; fi
-          npm run build
+        run: BASE_PATH="${{ steps.pages.outputs.base_path }}/" npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
