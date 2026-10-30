@@ -62,7 +62,36 @@ If you see a 404 page at first, wait a minute and refresh.
 | The name has a typo | On github.com: **Settings → General → Repository name** → fix it → **Rename**. |
 | You chose a different name, like `portfolio` | That works too. The address becomes `https://YOUR-USERNAME.github.io/portfolio/`. |
 
-You can connect your own domain (like `saarthak.com`) later under **Settings → Pages → Custom domain**.
+To use your own domain (like `saarthakmaharana.com`), see Part 1b below.
+
+## Part 1b — Use your own domain (saarthakmaharana.com)
+
+Do Part 1 first so the site works at `YOUR-USERNAME.github.io`. Then:
+
+1. **Buy the domain** from a registrar such as Cloudflare, Namecheap, Porkbun or GoDaddy (roughly ₹800–1,500 a year for `.com`).
+   Search for `saarthakmaharana.com` to check it's available.
+2. **Point the domain at GitHub.** In the registrar's **DNS settings**, delete any existing `A` or `CNAME` records for `@` and `www`
+   (often "parking" records), then add:
+
+   | Type | Name / Host | Value |
+   |---|---|---|
+   | A | `@` | `185.199.108.153` |
+   | A | `@` | `185.199.109.153` |
+   | A | `@` | `185.199.110.153` |
+   | A | `@` | `185.199.111.153` |
+   | CNAME | `www` | `YOUR-USERNAME.github.io` |
+
+   On Cloudflare, set each record's proxy to **DNS only** (grey cloud).
+3. **Tell GitHub.** In the repository: **Settings → Pages → Custom domain**. Type `saarthakmaharana.com` and click **Save**.
+   GitHub runs a DNS check. This can take from 10 minutes to a few hours while the new settings spread.
+4. When the check passes, tick **Enforce HTTPS** on the same page. Its certificate can take up to an hour to appear.
+5. **Rebuild once:** **Actions → Deploy to GitHub Pages → Run workflow**.
+
+After that, `https://saarthakmaharana.com` shows your site and `www.saarthakmaharana.com` redirects to it. The old
+`github.io` address forwards there too. Updates work exactly as before (Commit → Push origin).
+
+*Recommended:* in your **account** settings (your profile picture → Settings → Pages), click **Add a domain** and follow the
+steps to verify `saarthakmaharana.com`. This stops anyone else from using your domain on GitHub.
 
 ## Part 2 — Updating the site later
 
