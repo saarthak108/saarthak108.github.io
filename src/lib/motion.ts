@@ -22,8 +22,9 @@ export function initSmoothScroll() {
 }
 
 export function scrollToY(y: number, immediate = false) {
-  if (lenis) lenis.scrollTo(y, { immediate, duration: 1.4 });
-  else window.scrollTo({ top: y, behavior: immediate ? 'auto' : 'smooth' });
+  // `force`: scroll even while Lenis is stopped (e.g. the mobile menu was open during navigation).
+  if (lenis) lenis.scrollTo(y, { immediate, force: true, duration: 1.4 });
+  if (!lenis || immediate) window.scrollTo({ top: y, behavior: immediate ? 'auto' : 'smooth' });
 }
 
 export function scrollToEl(el: HTMLElement) {

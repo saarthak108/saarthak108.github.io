@@ -313,10 +313,17 @@ const featuredOrder = ['valley-of-aldrheim', 'the-nuclear-plant', 'apocalyptic-r
 export const featuredProjects = featuredOrder.map((s) => projects.find((p) => p.slug === s)).filter((p): p is Project => Boolean(p));
 
 /** Stills for the floating home-page composition, in display order. */
-export const showcase: ImageAsset[] = [
-  images.castle, bySection('archviz')[0].cover, images.observer, images.pyramid, bySection('archviz')[1].cover,
-  images.aldrheim, images.ganesha, bySection('archviz')[2].cover, images.wildwest, images.apoc, bySection('archviz')[3].cover, images.space,
-];
+// Only images from the project library: film frames, ArchViz covers and practice renders, interleaved.
+export const showcase: ImageAsset[] = (() => {
+  const queues = [
+    bySection('environments').flatMap((p) => (p.video ? [p.video.poster] : [])),
+    bySection('archviz').map((p) => p.cover),
+    practice.map((p) => p.cover),
+  ];
+  const out: ImageAsset[] = [];
+  while (queues.some((q) => q.length)) queues.forEach((q) => q.length && out.push(q.shift()!));
+  return out;
+})();
 
 export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);

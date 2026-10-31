@@ -14,6 +14,24 @@ const smoothstep = (e0: number, e1: number, x: number) => {
   const t = clamp((x - e0) / (e1 - e0));
   return t * t * (3 - 2 * t);
 };
+/** A w×h plane with rounded corners, UVs spanning 0–1 like PlaneGeometry. */
+function roundedPlane(w: number, h: number, r: number) {
+  const x = -w / 2, y = -h / 2;
+  const s = new THREE.Shape();
+  s.moveTo(x + r, y);
+  s.lineTo(x + w - r, y);
+  s.quadraticCurveTo(x + w, y, x + w, y + r);
+  s.lineTo(x + w, y + h - r);
+  s.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  s.lineTo(x + r, y + h);
+  s.quadraticCurveTo(x, y + h, x, y + h - r);
+  s.lineTo(x, y + r);
+  s.quadraticCurveTo(x, y, x + r, y);
+  const geo = new THREE.ShapeGeometry(s, 10);
+  const pos = geo.attributes.position, uv = geo.attributes.uv;
+  for (let i = 0; i < pos.count; i++) uv.setXY(i, (pos.getX(i) - x) / w, (pos.getY(i) - y) / h);
+  return geo;
+}
 const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
 /**
@@ -58,14 +76,14 @@ export function FloatingRenders({ track }: Props) {
     const textures = new Map<string, THREE.Texture>();
     const maxAniso = renderer.capabilities.getMaxAnisotropy();
 
-    type Plane = { mesh: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial>; x: number; y: number; z: number; rx: number; ry: number; seed: number };
+    type Plane = { mesh: THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial>; x: number; y: number; z: number; rx: number; ry: number; seed: number };
     const planes: Plane[] = [];
 
     for (let i = 0; i < COUNT; i++) {
       const img = showcase[i % showcase.length];
       const aspect = img.width / img.height;
       const h = aspect < 1 ? (mobile ? 1.7 : 2.7) : mobile ? 1.15 : 1.9;
-      const geo = new THREE.PlaneGeometry(h * aspect, h);
+      const geo = roundedPlane(h * aspect, h, h * 0.045);
       const mat = new THREE.MeshBasicMaterial({ color: 0x1b1d22, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false });
 
       let tex = textures.get(img.key);
