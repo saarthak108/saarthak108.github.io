@@ -1,17 +1,17 @@
 :root {
-  /* Ground — a cool near-black that lets warm and cold renders both sit well */
-  --bg: #121316;
-  --bg-2: #17181c;
-  --bg-3: #1d1f24;
-  --fg: #f2f1ee;
-  --fg-2: rgba(242, 241, 238, 0.62);
-  --fg-3: rgba(242, 241, 238, 0.4);
-  --fg-4: rgba(242, 241, 238, 0.2);
-  --line: rgba(242, 241, 238, 0.1);
-  --line-2: rgba(242, 241, 238, 0.22);
-  /* Instrument accents: used for indicators and hairlines only */
-  --accent: #5b8cff;
-  --accent-2: #9a6bff;
+  /* Concrete & Signal — warm concrete grey, off-white text, safety-orange accent */
+  --bg: #1c1c1a;
+  --bg-2: #222220;
+  --bg-3: #2a2a27;
+  --fg: #f4f2ec;
+  --fg-2: rgba(244, 242, 236, 0.64);
+  --fg-3: rgba(244, 242, 236, 0.42);
+  --fg-4: rgba(244, 242, 236, 0.2);
+  --line: rgba(244, 242, 236, 0.12);
+  --line-2: rgba(244, 242, 236, 0.26);
+  /* Signal accents: indicators, hairlines and the italic serif words */
+  --accent: #ff5b24;
+  --accent-2: #ffb000;
 
   --font-display: 'Archivo', 'Archivo Fallback', system-ui, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;

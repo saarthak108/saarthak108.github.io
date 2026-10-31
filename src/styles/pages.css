@@ -39,8 +39,8 @@
   /* Strong behind the title, lifts once the title has gone so renders read at full brightness */
   opacity: clamp(0.35, 1 - var(--p, 0) * 3.5, 1);
   background:
-    radial-gradient(ellipse 60% 48% at 50% 50%, rgba(18, 19, 22, 0.78) 0%, rgba(18, 19, 22, 0.35) 55%, rgba(18, 19, 22, 0) 80%),
-    linear-gradient(rgba(18, 19, 22, 0.5), transparent 18%, transparent 82%, rgba(18, 19, 22, 0.9));
+    radial-gradient(ellipse 60% 48% at 50% 50%, rgba(28, 28, 26, 0.78) 0%, rgba(28, 28, 26, 0.35) 55%, rgba(28, 28, 26, 0) 80%),
+    linear-gradient(rgba(28, 28, 26, 0.5), transparent 18%, transparent 82%, rgba(28, 28, 26, 0.9));
 }
 .hero__intro {
   position: absolute;
@@ -525,7 +525,7 @@
   left: 12px;
   padding: 6px 9px;
   border-radius: 3px;
-  background: rgba(18, 19, 22, 0.72);
+  background: rgba(28, 28, 26, 0.72);
   backdrop-filter: blur(6px);
   color: var(--fg);
 }
@@ -600,7 +600,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(18, 19, 22, 0.55), transparent 25%, transparent 45%, rgba(18, 19, 22, 0.92));
+  background: linear-gradient(rgba(28, 28, 26, 0.55), transparent 25%, transparent 45%, rgba(28, 28, 26, 0.92));
   pointer-events: none;
 }
 .pd__hero--portrait .pd__hero-media {
@@ -610,7 +610,7 @@
   right: calc(var(--gutter) + var(--scale-w));
 }
 .pd__hero--portrait::after {
-  background: linear-gradient(90deg, var(--bg) 40%, rgba(18, 19, 22, 0.2) 70%, transparent);
+  background: linear-gradient(90deg, var(--bg) 40%, rgba(28, 28, 26, 0.2) 70%, transparent);
 }
 .pd__hero-text {
   position: relative;
@@ -727,11 +727,11 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(18, 19, 22, 0.55);
+  background: rgba(28, 28, 26, 0.55);
   transition: background 0.5s;
 }
 .pd__next:hover::after {
-  background: rgba(18, 19, 22, 0.3);
+  background: rgba(28, 28, 26, 0.3);
 }
 .pd__next-text {
   position: absolute;
@@ -756,7 +756,7 @@
     inset: 0;
   }
   .pd__hero--portrait::after {
-    background: linear-gradient(transparent 30%, rgba(18, 19, 22, 0.95));
+    background: linear-gradient(transparent 30%, rgba(28, 28, 26, 0.95));
   }
   .pd__hero--portrait .pd__hero-text {
     align-self: flex-end;
@@ -878,7 +878,7 @@
 .ai__inner {
   position: relative;
   border: 1px solid var(--line);
-  background: linear-gradient(135deg, rgba(91, 140, 255, 0.08), transparent 50%), var(--bg-2);
+  background: linear-gradient(135deg, rgba(255, 91, 36, 0.08), transparent 50%), var(--bg-2);
   padding: clamp(28px, 5vw, 72px);
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
@@ -892,7 +892,7 @@
   font-size: clamp(32px, 4.4vw, 72px);
 }
 .ai__inner h2 .serif {
-  color: #b9cbff;
+  color: #ffb596;
   font-size: 1.1em;
 }
 .ai__inner p {
@@ -1053,7 +1053,7 @@
 .is-current .tl__node {
   background: var(--accent);
   border-color: var(--accent);
-  box-shadow: 0 0 0 6px rgba(91, 140, 255, 0.15);
+  box-shadow: 0 0 0 6px rgba(255, 91, 36, 0.15);
 }
 .tl__body {
   display: flex;
@@ -1065,8 +1065,8 @@
   margin-left: 12px;
   padding: 2px 8px;
   border-radius: 20px;
-  background: rgba(91, 140, 255, 0.15);
-  color: #b9cbff;
+  background: rgba(255, 91, 36, 0.15);
+  color: #ffb596;
 }
 .tl__org {
   font-size: clamp(28px, 3.6vw, 60px);
@@ -1299,7 +1299,7 @@
   transition: background 0.3s;
 }
 .caps__item--cta .dim {
-  color: rgba(18, 19, 22, 0.55);
+  color: rgba(28, 28, 26, 0.55);
 }
 .caps__item--cta:hover {
   background: #fff;

@@ -24,13 +24,13 @@
   color: var(--bg);
 }
 .btn--solid:hover {
-  background: #fff;
+  background: var(--accent);
   transform: translateY(-1px);
 }
 .btn--ghost {
   border: 1px solid var(--line-2);
   color: var(--fg);
-  background: rgba(18, 19, 22, 0.4);
+  background: rgba(28, 28, 26, 0.4);
   backdrop-filter: blur(8px);
 }
 .btn--ghost:hover {
@@ -58,8 +58,8 @@
   display: inline-block;
   margin-top: 12px;
   padding: 6px 10px;
-  border: 1px dashed rgba(154, 107, 255, 0.5);
-  color: #b89cff;
+  border: 1px dashed rgba(255, 176, 0, 0.5);
+  color: #ffc94d;
   border-radius: 3px;
   font-size: 10px;
 }
@@ -88,7 +88,7 @@
   background:
     linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 40px 40px,
     linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 40px 40px,
-    radial-gradient(ellipse at 30% 20%, rgba(91, 140, 255, 0.14), transparent 60%),
+    radial-gradient(ellipse at 30% 20%, rgba(255, 91, 36, 0.14), transparent 60%),
     var(--bg-2);
 }
 .render__grid {
@@ -130,14 +130,14 @@
   justify-content: space-between;
   gap: 24px;
   padding: 0 var(--gutter);
-  background: linear-gradient(rgba(18, 19, 22, 0.8), rgba(18, 19, 22, 0));
+  background: linear-gradient(rgba(28, 28, 26, 0.8), rgba(28, 28, 26, 0));
   transition:
     background 0.4s,
     border-color 0.4s;
   border-bottom: 1px solid transparent;
 }
 .nav--scrolled {
-  background: rgba(18, 19, 22, 0.72);
+  background: rgba(28, 28, 26, 0.72);
   backdrop-filter: blur(16px) saturate(1.2);
   -webkit-backdrop-filter: blur(16px) saturate(1.2);
   border-bottom-color: var(--line);
@@ -336,7 +336,7 @@
   width: 40px;
   height: 1px;
   background: var(--accent);
-  box-shadow: 0 0 10px rgba(91, 140, 255, 0.6);
+  box-shadow: 0 0 10px rgba(255, 91, 36, 0.6);
 }
 .scale__readout {
   position: absolute;
@@ -410,7 +410,7 @@
   text-transform: uppercase;
   color: var(--fg-2);
   padding: 4px 8px;
-  background: rgba(18, 19, 22, 0.86);
+  background: rgba(28, 28, 26, 0.86);
   backdrop-filter: blur(6px);
   transition:
     opacity 0.3s,
@@ -598,7 +598,7 @@
   z-index: 80;
   display: grid;
   grid-template-columns: minmax(0, 1fr) clamp(300px, 26vw, 420px);
-  background: rgba(10, 11, 13, 0.97);
+  background: rgba(20, 20, 18, 0.97);
   animation: fade-in 0.4s var(--ease);
 }
 @keyframes fade-in {
@@ -727,7 +727,7 @@
   border: 1px solid var(--line-2);
   border-radius: 50%;
   font-size: 18px;
-  background: rgba(18, 19, 22, 0.6);
+  background: rgba(28, 28, 26, 0.6);
   transition: border-color 0.3s;
 }
 .lightbox__nav:hover {

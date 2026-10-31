@@ -84,7 +84,7 @@ export function FloatingRenders({ track }: Props) {
       const aspect = img.width / img.height;
       const h = aspect < 1 ? (mobile ? 1.7 : 2.7) : mobile ? 1.15 : 1.9;
       const geo = roundedPlane(h * aspect, h, h * 0.045);
-      const mat = new THREE.MeshBasicMaterial({ color: 0x1b1d22, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false });
+      const mat = new THREE.MeshBasicMaterial({ color: 0x262624, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false });
 
       let tex = textures.get(img.key);
       if (!tex) {
@@ -116,9 +116,9 @@ export function FloatingRenders({ track }: Props) {
     // ---- Orbit lines (thin elliptical arcs, echoing an instrument) ------
     const rings: THREE.Line[] = [];
     const ringDefs = [
-      { r: mobile ? 3.2 : 6.5, z: -10, color: 0x5b8cff, tilt: 1.2, op: 0.45 },
-      { r: mobile ? 4 : 8.5, z: -26, color: 0x9a6bff, tilt: 1.05, op: 0.32 },
-      { r: mobile ? 3.4 : 7, z: -44, color: 0xf2f1ee, tilt: 1.3, op: 0.16 },
+      { r: mobile ? 3.2 : 6.5, z: -10, color: 0xff5b24, tilt: 1.2, op: 0.45 },
+      { r: mobile ? 4 : 8.5, z: -26, color: 0xffb000, tilt: 1.05, op: 0.32 },
+      { r: mobile ? 3.4 : 7, z: -44, color: 0xf4f2ec, tilt: 1.3, op: 0.16 },
     ];
     for (const d of ringDefs) {
       const pts = new THREE.EllipseCurve(0, 0, d.r, d.r, 0, Math.PI * 2, false, 0).getPoints(160);

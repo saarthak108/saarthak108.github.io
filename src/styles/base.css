@@ -65,7 +65,7 @@ ul {
 }
 ::selection {
   background: var(--accent);
-  color: #fff;
+  color: var(--bg);
 }
 :focus-visible {
   outline: 1px solid var(--accent);
@@ -83,6 +83,7 @@ ul {
 .serif {
   font-family: var(--font-serif);
   font-style: italic;
+  color: var(--accent);
   font-weight: 400;
   font-stretch: normal;
   letter-spacing: -0.01em;
