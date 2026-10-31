@@ -137,6 +137,15 @@ This resizes and compresses everything into web-ready files.
 - The Gallery wall rebalances its columns automatically.
 - The viewer adapts to tall or wide images.
 
+### Changing a film's thumbnail
+Save the image you want (a screenshot or render, ideally wide 16:9) in `Unreal & Blender Projects` with **exactly the same name as the video**, just a different ending:
+
+| Video | Thumbnail image |
+|---|---|
+| `The Lost Pyramid.mp4` | `The Lost Pyramid.jpg` (or `.png`) |
+
+Then run `npm run import -- video`, check it with `npm run dev`, and commit and push. Delete the image to go back to the automatic thumbnail.
+
 ## Getting help
 If something looks wrong, GitHub Desktop's **History** tab shows every change. You can right-click a change and choose
 **Revert** to undo it. A simpler point-and-click editor (a small app) can be built later if you'd like.

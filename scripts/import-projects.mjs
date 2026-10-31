@@ -119,10 +119,13 @@ async function importVideos() {
     execFileSync(ffmpeg, ['-y', '-hide_banner', '-loglevel', 'error', '-ss', String(at), '-t', '6', '-i', input,
       '-vf', cropF + (width >= height ? 'scale=720:-2' : 'scale=-2:720'), '-an', '-c:v', 'libx264', '-preset', 'slow', '-crf', '30',
       '-pix_fmt', 'yuv420p', '-movflags', '+faststart', join(VIDEO, `${slug}-preview.mp4`)]);
-    // Poster frame from about a third of the way in, unless overridden above.
-    const frame = execFileSync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-ss', String(POSTER_AT[slug] ?? duration * 0.35), '-i', input,
+    // Thumbnail: an image next to the video with the same name (e.g. "The Lost Pyramid.jpg") wins;
+    // otherwise a frame from about a third of the way in, unless overridden above.
+    const custom = ['.jpg', '.jpeg', '.png', '.webp'].map((ext) => join(root, parse(file).name + ext)).find(existsSync);
+    const frame = custom ?? execFileSync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-ss', String(POSTER_AT[slug] ?? duration * 0.35), '-i', input,
       ...(crop ? ['-vf', `crop=${crop}`] : []), '-frames:v', '1', '-f', 'image2pipe', '-c:v', 'png', '-'], { maxBuffer: 1 << 28 });
     const poster = await writeSizes(frame, `env/${slug}`);
+    if (custom) console.log(`  thumbnail from ${parse(custom).base}`);
     manifest.videos[slug] = { file, duration: Math.round(duration), width, height, poster };
     console.log(`video/${slug}: ${Math.round(duration)}s ${width}x${height}${crop ? ` letterbox crop ${crop}` : ''}`);
   }
