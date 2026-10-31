@@ -14,7 +14,11 @@ export function Footer() {
             Have a world <em className="serif">in mind?</em>
             <span className="footer__arrow" aria-hidden="true">→</span>
           </Link>
-          <a className="footer__email" href={`mailto:${identity.email}`}>{identity.email}</a>
+          {/* The address isn't printed on the page; the button opens the visitor's mail app. */}
+          <div className="footer__actions">
+            <a className="btn btn--solid" href={`mailto:${identity.email}`}>✉ Email me</a>
+            <Link to="/contact" className="btn btn--ghost">Start a project →</Link>
+          </div>
         </div>
       )}
       <div className="footer__bar wrap">

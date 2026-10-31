@@ -23,7 +23,13 @@ const MANIFEST = 'src/data/media.json';
 const SIZES = [{ suffix: '', width: 2000 }, { suffix: '-md', width: 1100 }, { suffix: '-sm', width: 560 }];
 const only = process.argv[2];
 // Poster frame time (seconds) where the default third-of-the-way frame isn't representative.
-const POSTER_AT = { 'porsche-gt4-rs': 18 };
+const POSTER_AT = {
+  'apocalyptic-road': 1,
+  'porsche-gt4-rs': 18,
+  'tajmahal-renders-compilation2': 4.5,
+  'the-nuclear-plant': 39,
+  'the-valley-of-aldrheim': 8.5,
+};
 
 const slugify = (s) => s.toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const manifest = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : {};

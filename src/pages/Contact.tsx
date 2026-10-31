@@ -55,7 +55,7 @@ export function Contact() {
         </p>
 
         <div className="contact__email" data-reveal>
-          <a href={`mailto:${identity.email}`} className="display">{identity.email}</a>
+          <a href={`mailto:${identity.email}`} className="btn btn--solid">✉ Email me</a>
           <button className="btn btn--ghost" onClick={copy}>{copied ? 'Copied ✓' : 'Copy address'}</button>
         </div>
 
@@ -81,7 +81,7 @@ export function Contact() {
               </button>
               <p className="mono form__status" role="status">
                 {status === 'sent' && 'Thank you — message sent.'}
-                {status === 'error' && `Couldn’t send. Please email ${identity.email} directly.`}
+                {status === 'error' && `Couldn’t send. Please use the Email me button above.`}
               </p>
             </div>
           </form>

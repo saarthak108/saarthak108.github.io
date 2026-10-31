@@ -1346,20 +1346,10 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px 28px;
+  gap: 12px;
   margin: clamp(48px, 6vw, 88px) 0;
   padding: clamp(20px, 3vw, 36px) 0;
   border-block: 1px solid var(--line);
-}
-.contact__email a {
-  font-size: clamp(20px, 3.7vw, 62px);
-  font-stretch: 105%;
-  word-break: break-all;
-  background: linear-gradient(var(--accent), var(--accent)) left bottom / 0 1px no-repeat;
-  transition: background-size 0.6s var(--ease);
-}
-.contact__email a:hover {
-  background-size: 100% 1px;
 }
 .contact__grid {
   display: grid;
