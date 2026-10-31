@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { identity, nav, socials } from '../data/profile';
+import { EmailButton } from './EmailButton';
 
 export function Footer() {
   const { pathname } = useLocation();
@@ -14,10 +15,8 @@ export function Footer() {
             Have a world <em className="serif">in mind?</em>
             <span className="footer__arrow" aria-hidden="true">→</span>
           </Link>
-          {/* The address isn't printed on the page; the button opens the visitor's mail app. */}
           <div className="footer__actions">
-            <a className="btn btn--solid" href={`mailto:${identity.email}`}>✉ Email me</a>
-            <Link to="/contact" className="btn btn--ghost">Start a project →</Link>
+            <EmailButton />
           </div>
         </div>
       )}

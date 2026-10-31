@@ -30,6 +30,11 @@ const POSTER_AT = {
   'the-nuclear-plant': 39,
   'the-valley-of-aldrheim': 8.5,
 };
+// Extra frames (seconds) saved as stills for a film's project page, for films without their own renders.
+const FRAMES = {
+  'the-valley-of-aldrheim': [5, 14.8, 18.2, 24.8],
+  'the-nuclear-plant': [15, 27, 45, 51],
+};
 
 const slugify = (s) => s.toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const manifest = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : {};
@@ -132,7 +137,13 @@ async function importVideos() {
       ...(crop ? ['-vf', `crop=${crop}`] : []), '-frames:v', '1', '-f', 'image2pipe', '-c:v', 'png', '-'], { maxBuffer: 1 << 28 });
     const poster = await writeSizes(frame, `env/${slug}`);
     if (custom) console.log(`  thumbnail from ${parse(custom).base}`);
-    manifest.videos[slug] = { file, duration: Math.round(duration), width, height, poster };
+    const frames = [];
+    for (const [i, t] of (FRAMES[slug] ?? []).entries()) {
+      const still = execFileSync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-ss', String(t), '-i', input,
+        ...(crop ? ['-vf', `crop=${crop}`] : []), '-frames:v', '1', '-f', 'image2pipe', '-c:v', 'png', '-'], { maxBuffer: 1 << 28 });
+      frames.push(await writeSizes(still, `env/${slug}-still-${i + 1}`));
+    }
+    manifest.videos[slug] = { file, duration: Math.round(duration), width, height, poster, ...(frames.length ? { frames } : {}) };
     console.log(`video/${slug}: ${Math.round(duration)}s ${width}x${height}${crop ? ` letterbox crop ${crop}` : ''}`);
   }
 }

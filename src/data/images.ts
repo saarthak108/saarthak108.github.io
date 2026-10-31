@@ -28,7 +28,7 @@ export const images = {
   pyramid: { key: 'pyramid', alt: 'The Lost Pyramid — pyramid rising above a misty jungle canopy', width: 1920, height: 1080, focus: '50% 45%' },
   apoc: { key: 'apoc', alt: 'Overgrown roadway with barriers, utility poles and a water tower reclaimed by forest', width: 1920, height: 1080, focus: '55% 55%' },
   space: { key: 'space', alt: 'A dark planet with glowing red fissures in space', width: 1920, height: 1080, focus: '55% 50%' },
-  portrait: { key: 'portrait', alt: 'Portrait of Saarthak Maharana', width: 928, height: 1152, focus: '50% 30%' },
+  portrait: { key: 'portrait', alt: 'Portrait of Saarthak Maharana', width: 1100, height: 1473, focus: '50% 30%' },
 } satisfies Record<string, ImageAsset>;
 
 export type ImageSize = 'sm' | 'md' | 'lg';

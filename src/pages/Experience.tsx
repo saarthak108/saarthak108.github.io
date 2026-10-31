@@ -50,7 +50,7 @@ export function Experience() {
       <PageHead
         index="04"
         label="Experience"
-        aside="2006 — Present"
+        aside="2020 — Present"
         title={<>Path to the <em className="serif">studio.</em></>}
         lede="From 3D & VFX training at MAAC to freelance environment and ArchViz work, and now studio production at Altrune Studio."
       />

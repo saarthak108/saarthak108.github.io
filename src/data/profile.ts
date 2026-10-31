@@ -70,7 +70,6 @@ export const experience: TimelineEntry[] = [
 export const education: TimelineEntry[] = [
   { org: 'BBA', role: 'Graduation', period: 'Completed 2023', start: '2023' },
   { org: 'ADVFX Plus — MAAC Institute', role: '3D & VFX Software', period: '2020 — 2023', start: '2020' },
-  { org: 'Kendriya Vidyalaya', role: 'Schooling', period: '2006 — 2019', start: '2006' },
 ];
 
 export type Achievement = {
@@ -79,8 +78,10 @@ export type Achievement = {
   year?: string;
   kind: 'Award' | 'Certification';
   detail?: string;
-  /** Link to certificate or awarded work. Empty = shown as "link pending". */
+  /** Link to the awarded film (opens in a new tab). */
   href?: string;
+  /** Certificate image in public/certificates/ (shown as a thumbnail that opens full size). */
+  certificate?: string;
 };
 
 export const achievements: Achievement[] = [
@@ -90,18 +91,20 @@ export const achievements: Achievement[] = [
     year: '2023',
     kind: 'Award',
     detail: 'Best 3D Short Film · Best Lighting / Compositing',
+    href: 'https://www.youtube.com/watch?v=WWte9g75Rr8',
   },
   {
     title: 'Bronze — Brew Coffee Ad',
     issuer: 'Delhi CG Animation Awards',
     year: '2022',
     kind: 'Award',
+    href: 'https://www.youtube.com/watch?v=SL4Vw-ZquCc',
   },
-  { title: 'Adobe Certified Professional', issuer: 'Adobe', kind: 'Certification' },
-  { title: 'Autodesk Certified User', issuer: 'Autodesk', kind: 'Certification' },
+  { title: 'Adobe Certified Professional', issuer: 'Adobe', kind: 'Certification', certificate: 'adobe-certified-professional' },
+  { title: 'Autodesk Certified User', issuer: 'Autodesk', kind: 'Certification', certificate: 'autodesk-certified-user' },
 ];
 
-export type Tool = { name: string; group: string; note?: string; usedIn?: string[] };
+export type Tool = { name: string; group: string; brief: string; note?: string; usedIn?: string[] };
 
 export const toolGroups = [
   { id: 'realtime', label: 'Real-time & Engines' },
@@ -112,20 +115,34 @@ export const toolGroups = [
   { id: 'ai', label: 'AI Workflow' },
 ] as const;
 
+// In order of how much they're used — main tools first.
 export const tools: Tool[] = [
-  { name: 'Unreal Engine', group: 'realtime', note: 'Lumen · Nanite · Sequencer', usedIn: ['valley-of-aldrheim', 'medieval-castle'] },
-  { name: 'Blender', group: 'modeling', usedIn: ['the-silent-observer', 'hidden-temple-of-ganesha'] },
-  { name: '3ds Max', group: 'modeling' },
-  { name: 'Rhino 3D', group: 'modeling' },
-  { name: 'SketchUp', group: 'modeling' },
-  { name: 'Gaea', group: 'terrain' },
-  { name: 'World Creator', group: 'terrain' },
-  { name: 'SpeedTree', group: 'terrain' },
-  { name: 'D5 Render', group: 'render' },
-  { name: 'Photoshop', group: 'post' },
-  { name: 'Premiere Pro', group: 'post' },
-  { name: 'After Effects', group: 'post' },
-  { name: 'ComfyUI', group: 'ai', note: 'Diffusion pipelines for ArchViz' },
+  { name: 'Unreal Engine', group: 'realtime', note: 'Lumen · Nanite · Sequencer', usedIn: ['valley-of-aldrheim', 'the-nuclear-plant', 'medieval-castle'],
+    brief: 'Epic Games’ real-time engine and my main tool. Used to build, dress and light full environments — Lumen for real-time global illumination, Nanite for film-quality geometry, and Sequencer to direct the cinematics.' },
+  { name: 'Blender', group: 'modeling', usedIn: ['the-silent-observer', 'porsche-gt4-rs', 'hidden-temple-of-ganesha'],
+    brief: 'Open-source 3D suite for modeling, sculpting, UVs and rendering. Used for hero assets, hard-surface and organic modeling, and Cycles renders for stills and product-style films.' },
+  { name: 'D5 Render', group: 'render',
+    brief: 'Real-time ray-traced renderer made for architecture. Used to turn architects’ models into photoreal ArchViz stills and walkthroughs quickly, with fast lighting and material iteration.' },
+  { name: 'SketchUp', group: 'modeling',
+    brief: 'Fast, intuitive architectural modeling tool — and a common format architects share models in. Used to model, import and clean up building geometry for visualization.' },
+  { name: 'ComfyUI', group: 'ai', note: 'Diffusion pipelines for ArchViz',
+    brief: 'Node-based interface for building AI image pipelines (Stable Diffusion). Used to enhance ArchViz renders — refining light, materials and atmosphere — while keeping full artistic control.' },
+  { name: 'Rhino 3D', group: 'modeling',
+    brief: 'Precision NURBS modeler used by architects and designers. Used for complex, curved and parametric forms that need accurate geometry.' },
+  { name: '3ds Max', group: 'modeling',
+    brief: 'Autodesk’s 3D modeling and rendering software, an industry standard in architectural visualization. Used for modeling and preparing scenes.' },
+  { name: 'Gaea', group: 'terrain',
+    brief: 'Procedural terrain generator. Used to create realistic mountains and landscapes with natural erosion, exported as heightmaps and masks into Unreal Engine.' },
+  { name: 'World Creator', group: 'terrain',
+    brief: 'Real-time terrain and landscape generator. Used to shape and texture large-scale terrain quickly for open environments.' },
+  { name: 'SpeedTree', group: 'terrain',
+    brief: 'Industry-standard vegetation software. Used to create trees and foliage that are detailed up close yet optimized for real-time scenes.' },
+  { name: 'Photoshop', group: 'post',
+    brief: 'Adobe’s image editor. Used for textures, paint-overs, compositing and final colour grading of stills.' },
+  { name: 'Premiere Pro', group: 'post',
+    brief: 'Adobe’s video editor. Used to cut cinematics and showreels, add sound and deliver the final films.' },
+  { name: 'After Effects', group: 'post',
+    brief: 'Adobe’s motion graphics and compositing tool. Used for titles, visual effects and finishing touches on films.' },
 ];
 
 /** Also mentioned in the original portfolio as part of the pipeline. */
@@ -165,9 +182,7 @@ export const faq = [
 export const socials = [
   { label: 'ArtStation', handle: 'artstation.com/saarthak_108', href: 'https://www.artstation.com/saarthak_108' },
   { label: 'LinkedIn', handle: 'linkedin.com/in/saarthak108', href: 'https://www.linkedin.com/in/saarthak108/' },
-  { label: 'Linktree', handle: 'linktr.ee/saarthak_108', href: 'https://linktr.ee/saarthak_108' },
-  // YouTube link was a placeholder ("#") on the original site — add the URL to enable it.
-  { label: 'YouTube', handle: 'Channel link pending', href: '' },
+  { label: 'YouTube', handle: 'youtube.com/@saarthak_108', href: 'https://www.youtube.com/@saarthak_108' },
 ];
 
 export const nav = [

@@ -9,8 +9,7 @@ export function Skills() {
   useTitle('Skills');
   const root = useMotion<HTMLDivElement>();
   const [group, setGroup] = useState<string | null>(null);
-  const [hover, setHover] = useState<string | null>(null);
-  const focused = tools.find((t) => t.name === hover);
+  const [open, setOpen] = useState<string | null>(null);
 
   return (
     <div ref={root}>
@@ -23,7 +22,7 @@ export function Skills() {
       />
 
       <section className="kit wrap" data-section="Software">
-        <div className="rule-label mono"><span>A / Software</span><span className="dim">Hover a tool for context</span></div>
+        <div className="rule-label mono"><span>A / Software</span><span className="dim">Select a tool for details</span></div>
         <div className="kit__groups mono" role="group" aria-label="Highlight a category">
           {toolGroups.map((g) => (
             <button key={g.id} className={group === g.id ? 'is-active' : ''} aria-pressed={group === g.id} onClick={() => setGroup(group === g.id ? null : g.id)}>
@@ -32,44 +31,45 @@ export function Skills() {
           ))}
         </div>
         <div className="kit__layout">
-          <ul className={`kit__tools ${group ? 'has-filter' : ''}`}>
-            {tools.map((t, i) => (
-              <li
-                key={t.name}
-                className={`kit__tool ${group === t.group ? 'is-on' : ''}`}
-                onMouseEnter={() => setHover(t.name)}
-                onMouseLeave={() => setHover(null)}
-                onFocus={() => setHover(t.name)}
-                onBlur={() => setHover(null)}
-                tabIndex={0}
-                data-reveal
-                style={{ ['--d' as string]: `${i * 35}ms` }}
-              >
-                <span className="kit__name display">{t.name}</span>
-                <span className="kit__group mono">{toolGroups.find((g) => g.id === t.group)?.label}</span>
-              </li>
-            ))}
+          <ul className={`kit__tools ${group ? 'has-filter' : ''} ${open ? 'has-open' : ''}`}>
+            {tools.map((t, i) => {
+              const isOpen = open === t.name;
+              const id = `tool-${i}`;
+              return (
+                <li
+                  key={t.name}
+                  className={`kit__tool ${group === t.group ? 'is-on' : ''} ${isOpen ? 'is-open' : ''}`}
+                  data-reveal
+                  style={{ ['--d' as string]: `${i * 35}ms` }}
+                >
+                  <button className="kit__head" aria-expanded={isOpen} aria-controls={id} onClick={() => setOpen(isOpen ? null : t.name)}>
+                    <span className="kit__name display">{t.name}</span>
+                    <span className="kit__group mono">{toolGroups.find((g) => g.id === t.group)?.label}</span>
+                    <span className="kit__icon" aria-hidden="true" />
+                  </button>
+                  <div className="kit__brief" id={id} role="region" aria-hidden={!isOpen}>
+                    <div>
+                      <p>{t.brief}</p>
+                      {t.note && <p className="mono dim">{t.note}</p>}
+                      {t.usedIn && (
+                        <p className="mono kit__used">
+                          Used in:{' '}
+                          {t.usedIn.map((s, j) => (
+                            <span key={s}>{j > 0 && ', '}<Link to={`/work/${s}`} tabIndex={isOpen ? 0 : -1}>{getProject(s)?.title}</Link></span>
+                          ))}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
-          <aside className="kit__panel" aria-live="polite">
-            {focused ? (
-              <>
-                <span className="mono label">{toolGroups.find((g) => g.id === focused.group)?.label}</span>
-                <p className="kit__panel-name display">{focused.name}</p>
-                {focused.note && <p className="dim-2">{focused.note}</p>}
-                {focused.usedIn && (
-                  <p className="mono dim">
-                    Used in: {focused.usedIn.map((s) => getProject(s)?.title).join(', ')}
-                  </p>
-                )}
-              </>
-            ) : (
-              <>
-                <span className="mono label">Also in the pipeline</span>
-                <ul className="kit__pipeline">
-                  {pipeline.map((p) => <li key={p}>{p}</li>)}
-                </ul>
-              </>
-            )}
+          <aside className="kit__panel">
+            <span className="mono label">Also in the pipeline</span>
+            <ul className="kit__pipeline">
+              {pipeline.map((p) => <li key={p}>{p}</li>)}
+            </ul>
           </aside>
         </div>
       </section>

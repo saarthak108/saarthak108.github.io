@@ -2,6 +2,8 @@ import { PageHead } from '../components/PageHead';
 import { achievements } from '../data/profile';
 import { useMotion, useTitle } from '../lib/useMotion';
 
+const base = import.meta.env.BASE_URL;
+
 export function Achievements() {
   useTitle('Achievements');
   const root = useMotion<HTMLDivElement>();
@@ -41,11 +43,14 @@ export function Achievements() {
                   <p className="mono dim">{a.issuer}</p>
                   {a.detail && <p className="ach__detail">{a.detail}</p>}
                 </div>
-                {a.href ? (
-                  <a className="ach__link mono" href={a.href} target="_blank" rel="noopener noreferrer">View ↗</a>
-                ) : (
-                  <span className="ach__link ach__link--pending mono" title="Add a link in src/data/profile.ts">Link pending</span>
-                )}
+                {a.certificate ? (
+                  <a className="ach__cert" href={`${base}certificates/${a.certificate}.webp`} target="_blank" rel="noopener noreferrer" aria-label={`View the ${a.title} certificate full size`}>
+                    <img src={`${base}certificates/${a.certificate}-sm.webp`} alt={`${a.title} certificate`} loading="lazy" width={640} height={494} />
+                    <span className="mono">View certificate ↗</span>
+                  </a>
+                ) : a.href ? (
+                  <a className="ach__link mono" href={a.href} target="_blank" rel="noopener noreferrer">▶ Play video ↗</a>
+                ) : null}
               </li>
             ))}
           </ol>

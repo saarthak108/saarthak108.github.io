@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { identity, socials } from '../data/profile';
+import { EmailButton } from '../components/EmailButton';
 import { useMotion, useTitle } from '../lib/useMotion';
 
 // FormSubmit relays messages to the inbox without a backend (works on GitHub Pages).
@@ -12,17 +13,6 @@ export function Contact() {
   useTitle('Contact');
   const root = useMotion<HTMLDivElement>();
   const [status, setStatus] = useState<Status>('idle');
-  const [copied, setCopied] = useState(false);
-
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(identity.email);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1800);
-    } catch {
-      window.location.href = `mailto:${identity.email}`;
-    }
-  };
 
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,7 +25,9 @@ export function Contact() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({ ...data, _subject: `Portfolio enquiry from ${data.name}`, _template: 'table', _captcha: 'false' }),
       });
-      if (!res.ok) throw new Error(String(res.status));
+      // FormSubmit answers 200 even when it refuses (e.g. not activated yet), so check its verdict.
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || String(json.success) !== 'true') throw new Error(json.message || String(res.status));
       setStatus('sent');
       form.reset();
     } catch {
@@ -55,8 +47,7 @@ export function Contact() {
         </p>
 
         <div className="contact__email" data-reveal>
-          <a href={`mailto:${identity.email}`} className="btn btn--solid">✉ Email me</a>
-          <button className="btn btn--ghost" onClick={copy}>{copied ? 'Copied ✓' : 'Copy address'}</button>
+          <EmailButton />
         </div>
 
         <div className="contact__grid">

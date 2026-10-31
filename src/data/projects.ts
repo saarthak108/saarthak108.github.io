@@ -14,7 +14,7 @@ type MediaRender = { key: string; width: number; height: number; hero?: boolean;
 type Media = {
   archviz: Record<string, { folder: string; renders: MediaRender[] }>;
   practice: (MediaRender & { file: string })[];
-  videos: Record<string, { file: string; duration: number; width: number; height: number; poster: MediaRender }>;
+  videos: Record<string, { file: string; duration: number; width: number; height: number; poster: MediaRender; frames?: MediaRender[] }>;
 };
 const media = mediaJson as unknown as Media;
 const base = import.meta.env.BASE_URL;
@@ -63,8 +63,10 @@ function video(slug: string, title: string): Video {
 }
 
 type EnvInput = Omit<Project, 'section' | 'cover' | 'renders' | 'video'> & { videoSlug?: string; stills?: ImageAsset[] };
-function env({ videoSlug, stills = [], ...p }: EnvInput): Project {
+function env({ videoSlug, stills, ...p }: EnvInput): Project {
   const v = videoSlug ? video(videoSlug, p.title) : undefined;
+  // Without hand-picked stills, use the frames saved from the film (see FRAMES in the import script).
+  stills ??= (videoSlug ? media.videos[videoSlug].frames ?? [] : []).map((r, i) => asset(r, `${p.title} — still ${i + 1} from the film`));
   const cover = v?.poster ?? stills[0];
   return { ...p, section: 'environments', video: v, cover, renders: stills };
 }
@@ -96,7 +98,6 @@ export const projects: Project[] = [
     category: 'Fantasy Valley',
     software: 'Unreal Engine 5',
     videoSlug: 'the-valley-of-aldrheim',
-    stills: [images.aldrheim],
     summary: 'A fantasy valley of timber dwellings, forest and a watchful statue beneath snow-capped peaks.',
     description: [
       'Weathered timber houses sit along a winding dirt path that leads the eye up the valley to snow-capped mountains; in the film, a winged statue keeps watch over the forest.',
