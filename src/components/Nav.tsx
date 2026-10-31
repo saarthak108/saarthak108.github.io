@@ -34,7 +34,12 @@ export function Nav() {
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''} ${open ? 'nav--open' : ''}`}>
       <Link to="/" onClick={toTop('/')} className="nav__brand" aria-label={`${identity.name} — home`}>
         <span className="nav__mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32"><path d="M5 26 16 6l11 20" /><path d="M10 26h12" className="accent" /></svg>
+          {/* SM monogram — same drawing as public/favicon.svg */}
+          <svg viewBox="0 0 32 32">
+            <path d="M12.5 10.5C12 8.8 10.6 8 8.6 8 6 8 4.5 9.4 4.5 11.6c0 5 8.5 3.2 8.5 8.6 0 2.4-1.7 3.8-4.4 3.8-2.2 0-3.8-1-4.4-2.8" />
+            <path d="M17 24V8M28 8v16" />
+            <path d="M17 8l5.5 9L28 8" className="accent" />
+          </svg>
         </span>
         <span className="nav__name">Saarthak<span>Maharana</span></span>
       </Link>

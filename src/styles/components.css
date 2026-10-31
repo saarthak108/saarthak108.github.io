@@ -155,6 +155,7 @@
   stroke: var(--fg);
   stroke-width: 2.6;
   stroke-linejoin: round;
+  stroke-linecap: round;
 }
 .nav__mark .accent {
   stroke: var(--accent);
