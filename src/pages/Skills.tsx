@@ -36,12 +36,10 @@ export function Skills() {
               const isOpen = open === t.name;
               const id = `tool-${i}`;
               return (
-                <li
-                  key={t.name}
-                  className={`kit__tool ${group === t.group ? 'is-on' : ''} ${isOpen ? 'is-open' : ''}`}
-                  data-reveal
-                  style={{ ['--d' as string]: `${i * 35}ms` }}
-                >
+                // The reveal marker lives on the <li>; state classes go on the inner div, because
+                // re-rendering a changing className would wipe the "is-in" class and hide the row.
+                <li key={t.name} data-reveal style={{ ['--d' as string]: `${i * 35}ms` }}>
+                  <div className={`kit__tool ${group === t.group ? 'is-on' : ''} ${isOpen ? 'is-open' : ''}`}>
                   <button className="kit__head" aria-expanded={isOpen} aria-controls={id} onClick={() => setOpen(isOpen ? null : t.name)}>
                     <span className="kit__name display">{t.name}</span>
                     <span className="kit__group mono">{toolGroups.find((g) => g.id === t.group)?.label}</span>
@@ -60,6 +58,7 @@ export function Skills() {
                         </p>
                       )}
                     </div>
+                  </div>
                   </div>
                 </li>
               );
